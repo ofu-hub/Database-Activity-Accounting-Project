@@ -1,6 +1,14 @@
-import React from "react";
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
 
 function Clients() {
+    const [clients, setClients] = useState([]);
+
+    useEffect(() =>{
+        axios.get('/api/Clients')
+            .then(res => setClients(res.data))
+            .catch(err => console.log(err));
+    })
 
     return (
         <div>
