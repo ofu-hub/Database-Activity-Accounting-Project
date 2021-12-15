@@ -4,8 +4,13 @@ import {
   Nav
 } from 'react-bootstrap';
 import { Routes } from 'react-router';
-import Clients from './Clients';
 import Home from './Home';
+import Hall from './Hall';
+import Trainers from './Trainers';
+import Subs from './Subs';
+import Visits from './Visits';
+import Payment from './Payment'
+import Clients from './Clients';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -31,8 +36,13 @@ function App() {
         </Navbar>
         
         <Routes>
-          <Route path="clients" element={<Clients/>}/>
           <Route path='/' element={<Home/>}/>    
+          <Route path='hall' element={<Hall/>}/>
+          <Route path='trainers' element={<Trainers/>}/>
+          <Route path='subs' element={<Subs/>}/>
+          <Route path='visits' element={<Visits/>}/>
+          <Route path='payment' element={<Payment/>}/>
+          <Route path="clients" element={<Clients/>}/>
         </Routes>
       </div>
     </BrowserRouter>
