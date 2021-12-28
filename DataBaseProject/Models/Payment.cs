@@ -7,8 +7,8 @@ namespace DataBaseProject.Models
 {
     public class Payment
     {
-        public int Subscription { get; set; }
-        public DateTime PaymentDate { get; set; }
+        public int ID_Subscription { get; set; }
+        public DateTime Date { get; set; }
         public string Price { get; set; }
     }
 }

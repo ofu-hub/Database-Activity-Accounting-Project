@@ -48,6 +48,34 @@ namespace DataBaseProject.Controllers
             return new JsonResult(table);
         }
 
+        [HttpGet("NowDate")]
+        public JsonResult GetNowDate()
+        {
+            string query = @"
+                SELECT *
+                FROM dbo.Visit
+                WHERE CAST([DateTime] AS DATE) = CAST(GETDATE() AS DATE)
+            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("DevConnection");
+            SqlDataReader sqlReader;
+            using (SqlConnection sqlCon = new SqlConnection(sqlDataSource))
+            {
+                sqlCon.Open();
+
+                using (SqlCommand sqlComm = new SqlCommand(query, sqlCon))
+                {
+                    sqlReader = sqlComm.ExecuteReader();
+                    table.Load(sqlReader);
+                    sqlReader.Close();
+                    sqlCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
         [HttpPost]
         public JsonResult Post(Visit visit)
         {
